@@ -1,0 +1,181 @@
+A
+#include<iostream>
+#include<algorithm>
+using namespace std;
+class Number
+{
+	int num;
+	public:
+		Number(int a)
+		{
+			num = a;
+		}
+		Number()
+		{
+		}
+	Number maxDivisor(Number b)
+	{
+		Number temp;
+		int i;
+		if(num>b.num)
+		i = b.num;
+		else i=num;
+		for(;i>=1;i--)
+		{
+			if(num%i==0&&b.num%i==0)
+			{
+				temp.num = i;
+				break;
+			}
+		}
+		return temp;
+	}
+	void show()
+	{
+		cout<<num<<endl;
+	}
+ }; 
+int main() {
+
+    int n, n1, n2;
+
+    std::cin >> n;
+
+    for(int i = 0; i < n; ++i) {
+
+        std::cin >> n1 >> n2;
+
+        Number no1(n1), no2(n2);
+
+        Number no3 = no1.maxDivisor(no2);  //最大公约数
+
+        no3.show();
+
+    }
+    return 0;
+
+}
+
+
+
+
+B
+#include<iostream>
+#include<algorithm>
+using namespace std;
+class HanXin
+{
+	public:
+		int lin3;
+		int lin5;
+		int lin7;
+		void line3(int a)
+		{
+			lin3 = a;
+		}
+		void line5(int a)
+		{
+			lin5 = a;
+		}
+		void line7(int a)
+		{
+			lin7 = a;
+		}
+		void showMany()
+		{
+			for(int i=10;i<=100;i++)
+			{
+				if(i%3==lin3&&i%5==lin5&&i%7==lin7)
+				{
+					cout<<i<<endl;
+					return ;
+				}
+			}
+			cout<<"Impossible"<<endl;
+		}
+};
+int main() {
+
+    int n, n1, n2,n3;
+
+    std::cin >> n;
+
+    for(int i = 0; i < n; ++i) {
+
+        std::cin >> n1 >> n2 >> n3;
+
+        HanXin hx;  //韩信
+
+        hx.line3(n1);  //3人一排
+
+        hx.line5(n2);   //5人一排
+
+        hx.line7(n3);   //7人一排
+
+        hx.showMany();
+
+    }
+
+}
+
+
+
+
+C
+#include <iostream>
+#include <algorithm>
+using namespace std;
+class Number
+{
+	public:
+	int num;
+	int bit;
+	Number(int a,int b)
+	{
+		num =a;
+		bit = b;
+	}
+	Number()
+	{
+		
+	} 
+	void show()
+	{
+		cout<<num<<endl;
+	}
+	Number converto(int n2)
+	{
+		Number temp;
+		temp.bit = n2;
+		int t = num;
+		int res=0;			
+		while(t!=0)
+		{
+			res += t%n2;
+			res = res*10;
+			t = t/n2; 
+		}
+		res = res/10;
+		temp.num = res;
+		return temp;
+	}
+};
+int main() {
+
+    int n, n1, n2;
+
+    std::cin >> n;
+
+    for(int i = 0; i < n; ++i) {
+
+        std::cin >> n1 >> n2;
+
+        Number no1(n1, 10);     //n1是10进制正整数
+
+        Number no3 = no1.converto(n2);  //no3是n2进制的正整数
+
+        no3.show();     //输出结果
+
+    }
+
+}
